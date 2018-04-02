@@ -11,7 +11,11 @@ def find_user(user_id):
 	f_user = open("data/users.pkl", "rb")
 	users = pickle.load(f_user)
 	f_user.close()
-	return users[user_id]
+	try:
+		return users[user_id]
+	except:
+		users[userid] = {'dish_id': -1, 'step_id': 0, 'time_stamp': time.time()}
+		return 0
 
 def save_user():
 	global users
@@ -51,6 +55,8 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 			return -2, "请问要做什么菜？", 0
 	else:
 		info = find_user(user_id)
+		if info == 0:
+			return return -2, "请问要做什么菜？", 0
 		info['time_stamp'] = time.time()
 		dish_id = info['dish_id']
 		if dish_id == -1:
