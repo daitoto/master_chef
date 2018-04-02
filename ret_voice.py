@@ -1,9 +1,22 @@
 # -*- coding: utf-8 -*-
 import time
+import pickle
 #[dish_name:string, sources:list[string], steps:list[step:[info, time]], key_words:list[string]]
 cuisine = []
 #{userid:{dish_id, step_id, time_stamp}}
 users = dict()
+
+def find_user(user_id):
+	global users
+	f_user = open("data/users.pkl", "rb")
+	users = pickle.load(f_user)
+	f_user.close()
+
+def save_user():
+	global users
+	f_user = open("data/users.pkl", "wb")
+	pickle.dump(users, f_user)
+	f_user.close()
 
 def server_dish(dish_id, step_id):
 	global cuisine
@@ -26,8 +39,10 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 	if is_new:
 		new_user = dict()
 		dish_id = find_dish(dish_name)
-		if dish_id == -1 or request_type != 0:
-			return -1, "No such dish!", 0
+		if dish_id == -1:
+			return -1, "我还不会这个菜哦？", 0
+		if request_type != 0:
+			return -2, "请问要做什么菜？", 0
 		new_user['dish_id'] = dish_id
 		new_user['step_id'] = 0
 		new_user['time_stamp'] = time.time()
@@ -35,6 +50,7 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 		users[user_id] = new_user
 	else:
 		info = users[user_id]
+		info = find_user(user_id)
 		info['time_stamp'] = time.time()
 		dish_id = info['dish_id']
 		step_id = info['step_id']
@@ -47,6 +63,7 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 		users[user_id] = info
 	if ret[0] == -1:
 		del users[user_id]
+	save_user()
 	return step_id, ret[0], ret[1]
 
 def find_audio(time):
@@ -61,8 +78,8 @@ def find_audio(time):
 	return {"type": "audio", "url": url}, time_used
 
 def ret_list(step_id, words, time):
-	if step_id == -1:
-		return "我还不会这个菜哦？", [], True
+	if step_id == -1 or step_id == -2:
+		return words, [], True
 	if words == -1:
 		return "菜已经做完啦！", [], True
 	words = '第%d步，' % (step_id + 1) + words
@@ -100,6 +117,8 @@ def select(request_type, dish_name, is_new, user_id):
 
 def test_dish():
 	print(select(0, '宫保鸡丁', True, '01'))
+	print(select(0, 'aaa', True, '01'))
+	print(select(1, '宫保鸡丁', True, '01'))
 
 if __name__ == '__main__':
 	load_data()
