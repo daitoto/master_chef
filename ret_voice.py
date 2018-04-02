@@ -11,6 +11,7 @@ def find_user(user_id):
 	f_user = open("data/users.pkl", "rb")
 	users = pickle.load(f_user)
 	f_user.close()
+	return users[user_id]
 
 def save_user():
 	global users
@@ -39,20 +40,21 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 	if is_new:
 		new_user = dict()
 		dish_id = find_dish(dish_name)
-		if dish_id == -1:
-			return -1, "我还不会这个菜哦？", 0
-		if request_type != 0:
-			return -2, "请问要做什么菜？", 0
 		new_user['dish_id'] = dish_id
 		new_user['step_id'] = 0
 		new_user['time_stamp'] = time.time()
 		ret = server_dish(dish_id, 0)
 		users[user_id] = new_user
+		if dish_id == -1:
+			return -1, "我还不会这个菜哦？", 0
+		if request_type != 0:
+			return -2, "请问要做什么菜？", 0
 	else:
-		info = users[user_id]
 		info = find_user(user_id)
 		info['time_stamp'] = time.time()
 		dish_id = info['dish_id']
+		if dish_id == -1:
+			return -1, "我还不会这个菜哦？", 0
 		step_id = info['step_id']
 		if request_type == 1:
 			step_id += 1
@@ -63,7 +65,6 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 		users[user_id] = info
 	if ret[0] == -1:
 		del users[user_id]
-	save_user()
 	return step_id, ret[0], ret[1]
 
 def find_audio(time):
@@ -113,6 +114,7 @@ def load_data():
 
 def select(request_type, dish_name, is_new, user_id):
 	step_id, words, time = ret_voice(dish_name, is_new, user_id, request_type)
+	save_user()
 	return ret_list(step_id, words, time)
 
 def test_dish():
