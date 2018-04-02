@@ -56,7 +56,7 @@ def ret_voice(dish_name, is_new, user_id, request_type):
 	else:
 		info = find_user(user_id)
 		if info == 0:
-			return -2, "请问要做什么菜？", 0
+			return -2, "您的菜已经做完啦！请问要做什么菜？", 0
 		info['time_stamp'] = time.time()
 		dish_id = info['dish_id']
 		if dish_id == -1:
@@ -88,7 +88,7 @@ def ret_list(step_id, words, time):
 	if step_id == -1 or step_id == -2:
 		return words, [], True
 	if words == -1:
-		return "菜已经做完啦！", [], True
+		return "您的菜已经做完啦！", [], True
 	words = '第%d步，' % (step_id + 1) + words
 	ret = []
 	while time > 0:
