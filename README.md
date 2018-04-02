@@ -1,6 +1,6 @@
 响应：
 	input：
-		菜名*， isnew, userID, 询问类型*
+		菜名*， isnew, userID, 询问类型(0:new, 1:next, 2:repeat)*
 	output:
 		文字，[音频], shouldEndSession
 
