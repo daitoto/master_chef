@@ -3,6 +3,7 @@ from flask import Flask
 from flask import request
 from flask import jsonify
 # from regrex import regrex
+from extractSlots import extractSlots
 from menu import select
 from menu import load_data
 
@@ -12,7 +13,9 @@ app = Flask(__name__)
 def chef():
 	text = request.get_json()
 	utterance = text['request']['utterance']
-	meal_name, res_type = regrex(utterance)
+	print(utterance)
+	meal_name, res_type = extractSlots(utterance)
+	print(meal_name, res_type)
 	# meal_name, res_type = "宫保鸡丁", 1
 	print(res_type, meal_name, text['session']['user']['userId'])
 	res_string, drects, shouldEndSession = select(res_type, meal_name, text['session']['user']['userId'])
