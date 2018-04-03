@@ -43,24 +43,24 @@ def ret_voice(dish_name, user_id, request_type):
 	info = find_user(user_id)
 	info['time_stamp'] = time.time()
 	dish_id = info['dish_id']
-	if dish_id == -1 and request_type != 0:
-		return -1, "请问您要做什么菜？", 0
-	if dish_id == -2 and request_type != 0:
-		return -1, "我还不会这个菜哦？", 0
 	step_id = info['step_id']
 	if request_type == 1:
+		if dish_id == -1:
+			return -1, "请问您要做什么菜？", 0
 		step_id += 1
 		ret = server_dish(dish_id, step_id)
 		info['step_id'] = step_id
 	elif request_type == 2:
+		if dish_id == -1:
+			return -1, "请问您要做什么菜？", 0
 		ret = server_dish(dish_id, step_id)
 	elif request_type == 0:
 		dish_id = find_dish(dish_name)
+		if dish_id == -2:
+			return -1, "我还不会这个菜哦？", 0
 		info['dish_id'] = dish_id
 		info['step_id'] = 0
 		step_id = 0
-		if dish_id == -2:
-			return -1, "我还不会这个菜哦？", 0
 		ret = server_dish(dish_id, 0)
 	elif request_type == -1:
 		return -1, "我不太明白您的意思。", 0
@@ -93,7 +93,8 @@ def ret_list(step_id, words, time):
 		audio, time_used = find_audio(time)
 		time -= time_used
 		ret.append(audio)
-	return words, ret, False
+	#return words, ret, False
+	return words, [], False
 
 def extract(dish):
 	ret = [dish[0]]
