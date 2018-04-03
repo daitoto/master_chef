@@ -14,8 +14,8 @@ def find_user(user_id):
 	try:
 		return users[user_id]
 	except:
-		users[user_id] = {'dish_id': -1, 'step_id': 0, 'time_stamp': time.time()}
-		return 0
+		users[user_id] = {'dish_id': -1, 'step_id': 0, 'time_stamp': 0}
+		return users[user_id]
 
 def save_user():
 	global users
@@ -26,7 +26,7 @@ def save_user():
 def server_dish(dish_id, step_id):
 	global cuisine
 	if step_id >= len(cuisine[dish_id][2]):
-		return [-1, 0]
+		return [-2, 0]
 	return cuisine[dish_id][2][step_id]
 
 # -1 means no such dish
@@ -35,17 +35,17 @@ def find_dish(dish_name):
 	for i in range(len(cuisine)):
 		if (cuisine[i][0] == dish_name):
 			return i
-	return -1
+	return -2
 
 #request_type: 0: new dish, 1: next step, 2: repeat
 def ret_voice(dish_name, user_id, request_type):
 	global users
 	info = find_user(user_id)
-	if info == 0:
-		return -2, "您的菜已经做完啦！请问要做什么菜？", 0
 	info['time_stamp'] = time.time()
 	dish_id = info['dish_id']
 	if dish_id == -1 and request_type != 0:
+		return -1, "请问您要做什么菜？", 0
+	if dish_id == -2 and request_type != 0:
 		return -1, "我还不会这个菜哦？", 0
 	step_id = info['step_id']
 	if request_type == 1:
@@ -54,14 +54,20 @@ def ret_voice(dish_name, user_id, request_type):
 		info['step_id'] = step_id
 	elif request_type == 2:
 		ret = server_dish(dish_id, step_id)
-	else:
+	elif request_type == 0:
 		dish_id = find_dish(dish_name)
 		info['dish_id'] = dish_id
 		info['step_id'] = 0
 		step_id = 0
+		if dish_id == -2:
+			return -1, "我还不会这个菜哦？", 0
 		ret = server_dish(dish_id, 0)
+	elif request_type == -1:
+		return -1, "我不太明白您的意思。", 0
+	else:
+		return -1, "你好，我是芭乐大厨，您想做什么菜呢？", 0
 	users[user_id] = info
-	if ret[0] == -1:
+	if ret[0] == -2:
 		del users[user_id]
 	return step_id, ret[0], ret[1]
 
@@ -77,9 +83,9 @@ def find_audio(time):
 	return {"type": "audio", "url": url}, time_used
 
 def ret_list(step_id, words, time):
-	if step_id == -1 or step_id == -2:
-		return words, [], True
-	if words == -1:
+	if step_id == -1:
+		return words, [], False
+	if words == -2:
 		return "您的菜已经做完啦！", [], True
 	words = '第%d步，' % (step_id + 1) + words
 	ret = []
