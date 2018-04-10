@@ -37,6 +37,11 @@ def find_dish(dish_name):
 			return i
 	return -2
 
+#search dish name by id
+def id2name(dish_id):
+	global cuisine
+	return cuisine[dish_id][0]
+
 #request_type: 0: new dish, 1: next step, 2: repeat
 def ret_voice(dish_name, user_id, request_type):
 	global users
@@ -67,7 +72,10 @@ def ret_voice(dish_name, user_id, request_type):
 	elif request_type == -1:
 		return -1, "我不太明白您的意思。", 0
 	else:
-		return -1, "你好，我是芭乐大厨，您想做什么菜呢？", 0
+		if dish_id >= 0:
+			return -1, "您上次在做%s，请问要继续吗？" % (id2name(dish_id)), 0
+		else:
+			return -1, "你好，我是芭乐大厨，您想做什么菜呢？", 0
 	users[user_id] = info
 	if ret[0] == -2:
 		del users[user_id]
