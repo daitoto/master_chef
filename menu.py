@@ -44,6 +44,8 @@ def ret_voice(dish_name, user_id, request_type):
 	info['time_stamp'] = time.time()
 	dish_id = info['dish_id']
 	step_id = info['step_id']
+	if request_type == 4:
+		return -2,  "好的，再见", 0
 	if request_type == 1:
 		if dish_id == -1:
 			return -1, "请问您要做什么菜？", 0
@@ -77,12 +79,18 @@ def find_audio(time):
 	if time <= 0:
 		url = ""
 		time_used = 0
-	else:
-		url = "60.mp3"
+	elif time <= 60:
+		url = "http://123.57.219.210/voice/silence.mp3"
 		time_used = 60
+	else:
+		url = "http://123.57.219.210/voice/temp.mp3"
+		time_used = 300
+
 	return {"type": "audio", "url": url}, time_used
 
 def ret_list(step_id, words, time):
+	if step_id == -2:
+		return words, [], True
 	if step_id == -1:
 		return words, [], False
 	if words == -2:
@@ -93,8 +101,8 @@ def ret_list(step_id, words, time):
 		audio, time_used = find_audio(time)
 		time -= time_used
 		ret.append(audio)
-	#return words, ret, False
-	return words, [], False
+	return words, ret, False
+	# return words, [], False
 
 def extract(dish):
 	ret = [dish[0]]

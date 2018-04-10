@@ -54,7 +54,10 @@ def extractSlots(text):
 	# if result:
 	# 	food = result.group("food")
 	# 	return food, 0
-
+	pattern = re.compile('.*退出.*')
+	result = re.match(pattern, text)
+	if result:
+		return '', 4
 	return '', -1
 
 # text1 = "打开芭乐大厨"
