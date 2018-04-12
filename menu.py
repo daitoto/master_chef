@@ -78,7 +78,7 @@ def search_dish(names):
 	index = np.argsort(score)
 	n = -1
 	dishes = id2name(index[-1])
-	for i in range(3):
+	for i in range(2):
 		n -= 1
 		if score[index[n]] == 0:
 			break
