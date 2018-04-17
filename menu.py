@@ -1,33 +1,13 @@
 # -*- coding: utf-8 -*-
 import time
 import pickle
+from user import *
 import random
 import numpy as np
 #[dish_name:string, sources:list[string], steps:list[step:[info, time]], key_words:list[string]]
 cuisine = []
 #[id:[key, rep_key]]
 material = dict()
-#{userid:{dish_id, step_id, time_stamp}}
-users = dict()
-
-#search user info by id
-def find_user(user_id):
-	global users
-	f_user = open("data/users.pkl", "rb")
-	users = pickle.load(f_user)
-	f_user.close()
-	try:
-		return users[user_id]
-	except:
-		users[user_id] = {'dish_id': -1, 'step_id': 0, 'time_stamp': 0}
-		return users[user_id]
-
-#save user info
-def save_user():
-	global users
-	f_user = open("data/users.pkl", "wb")
-	pickle.dump(users, f_user)
-	f_user.close()
 
 #replace keywords
 def rep_key(words):
@@ -123,9 +103,10 @@ def ret_voice(names, user_id, request_type):
 		return -1, search_dish(names), 0
 	else:
 		pass
-	users[user_id] = info
 	if ret[0] == -2:
-		del users[user_id]
+		info['dish_id'] = -1
+		info['step_id'] = 0
+	users[user_id] = info
 	return step_id, ret[0], ret[1]
 
 #add audio depending on time
