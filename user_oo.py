@@ -18,6 +18,28 @@ class Users(object):
 		else:
 			self.user_list = dict()
 
+	def select(self, request_type, names, user_id):
+		user = self.getUser(user_id)
+		if request_type == -1:
+			return "我不太明白您的意思。", [], False
+		elif request_type == 0:
+			return user.user_queryName(names[0])
+		elif request_type == 1:
+			return user.user_Next()
+		elif request_type == 2:
+			return user.user_Again()
+		elif request_type == 3:
+			if user.dish_name == "":
+				return "你好，我是芭乐大厨，您想做什么菜呢？", [], False
+			else:
+				return "您上次在做%s，请问要继续下一步吗？" % (user.dish_name), [], False
+		elif request_type == 4:
+			return "好的，再见", [], True
+		elif request_type == 5:
+			return user.user_queryMaterial(names)
+		else:
+			pass
+
 	def addUser(self, user_id):
 		self.user_list[user_id] = User()
 

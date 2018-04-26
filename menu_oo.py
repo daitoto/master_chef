@@ -80,7 +80,7 @@ class Response(object):
 		ret = ""
 		for w in words:
 			if w in self.keywords:
-				if random.random() < 0.2:
+				if random.random() <= 1:
 					ret += self.keywords[w][1]
 				else:
 					ret += self.keywords[w][0]
