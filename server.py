@@ -1,26 +1,35 @@
 #coding=utf-8
+import pickle
+import time
+import os
 from flask import Flask
 from flask import request
 from flask import jsonify
 import logging
 # from regrex import regrex
 from extractSlots import extractSlots
-from menu import select
-from menu import load_data
+from user_oo import Users
+from materia import splitMateria
 
 app = Flask(__name__)
+users = Users()
 
 @app.route('/', methods=['POST'])
 def chef():
 	text = request.get_json()
 	utterance = text['request']['utterance']
-	# print(utterance)
 	logging.info(utterance + ' ' + text['session']['user']['userId'])
-	meal_name, res_type = extractSlots(utterance)
+	user_info = users.getUserInfo(text['session']['user']['userId'])
+	meal_name, res_type = extractSlots(utterance, user_info)
 	# print(meal_name, res_type)
-	# meal_name, res_type = "宫保鸡丁", 1
-	# print(res_type, meal_name, text['session']['user']['userId'])
-	res_string, drects, shouldEndSession = select(res_type, meal_name, text['session']['user']['userId'])
+	if res_type == 5:
+		meal_name = splitMateria(meal_name)
+	else:
+		meal_name = [meal_name]
+	res_string, drects, shouldEndSession = users.select(res_type, meal_name, text['session']['user']['userId'])
+	if shouldEndSession:
+		users.saveUsers()
+
 	return jsonify(version = text['version'],
 					requestId = text['request']['requestId'],
 					response = {"outputSpeech": res_string,
@@ -37,5 +46,4 @@ if __name__ == '__main__':
                 datefmt='%d %b %Y %H:%M:%S',
                 filename='chef.log',
                 filemode='a')
-	load_data()
 	app.run(port = 22121)

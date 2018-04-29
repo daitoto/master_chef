@@ -1,7 +1,6 @@
 import pickle
 import time
 import os
-import pickle
 from menu_oo import *
 
 response = Response()
@@ -20,6 +19,7 @@ class Users(object):
 
 	def select(self, request_type, names, user_id):
 		user = self.getUser(user_id)
+		print(request_type, names)
 		if request_type == -1:
 			return "我不太明白您的意思。", [], False
 		elif request_type == 0:
@@ -44,14 +44,18 @@ class Users(object):
 		self.user_list[user_id] = User()
 
 	def getUserInfo(self, user_id):
-		if not self.user_list[user_id]:
-			self.addUser(user_id)
-		return self.user_list[user_id].dish_name != ""
+		try:
+			return self.user_list[user_id].dish_name != ""
+		except:
+			self.addUser(user_id)		
+			return self.user_list[user_id].dish_name != ""	
 
 	def getUser(self, user_id):
-		if user_id not in self.user_list:
+		try:
+			return self.user_list[user_id]
+		except:
 			self.addUser(user_id)
-		return self.user_list[user_id]
+			return self.user_list[user_id]
 
 	def saveUsers(self, path = "data/users.pkl"):
 		f = open(path, "wb")
@@ -92,6 +96,7 @@ class User(object):
 		return response.makeResponseMaterial(material)
 
 	def user_queryName(self, name):
+		print(name)
 		ret = response.makeResponseName(name)
 		if ret[0] != "我还不会这个菜哦？":
 			self.dish_name = name

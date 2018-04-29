@@ -91,9 +91,12 @@ class Response(object):
 	def _find_ads(self, tim):
 		ret = []
 		time_left = tim
-		while time_left:
+		flag = 1
+		while time_left and flag:
+			flag = 0
 			for ad in self.ads:
 				if ad.queryByTime(time_left):
+					flag = 1
 					ret.append({"type": "audio", "url": ad.adVoice})
 					time_left -= ad.adTime
 					break
