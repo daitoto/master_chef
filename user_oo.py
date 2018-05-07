@@ -32,7 +32,7 @@ class Users(object):
 			if user.dish_name == "":
 				return "你好，我是芭乐大厨，您想做什么菜呢？", [], False
 			else:
-				return "您上次在做%s，请问要继续下一步吗？" % (user.dish_name), [], False
+				return "您上次在做，%s，请问要继续下一步吗？" % (user.dish_name), [], False
 		elif request_type == 4:
 			return "好的，再见", [], True
 		elif request_type == 5:
