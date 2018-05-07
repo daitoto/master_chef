@@ -1,0 +1,13 @@
+https://v.internetapi.cn/static/master_chef/jiangyou.mp3 15
+##
+https://v.internetapi.cn/static/master_chef/tiaoheyou.mp3 15
+##
+https://v.internetapi.cn/static/master_chef/shisanxiang.mp3 15
+##
+https://v.internetapi.cn/static/master_chef/song1.mp3 300
+##
+https://v.internetapi.cn/static/master_chef/tiaoheyou.mp3 30
+##
+https://v.internetapi.cn/static/master_chef/song2.mp3 120
+##
+https://v.internetapi.cn/static/master_chef/song3.mp3 60
