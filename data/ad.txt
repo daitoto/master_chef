@@ -9,3 +9,5 @@ http://v.voltree.cn/static/master_chef/tiaoheyou.mp3 30
 http://v.voltree.cn/static/master_chef/song2.mp3 180
 ##
 http://v.voltree.cn/static/master_chef/song3.mp3 120
+##
+http://v.voltree.cn/static/master_chef/tieguo1.wav 60
