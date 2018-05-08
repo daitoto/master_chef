@@ -95,4 +95,4 @@ def extractSlots(text, state):
 # text2 = "下一步"
 # text3 = "重复上一步的做法"
 # text4 = "查询下宫保鸡丁怎么做"
-# print(extractSlots("番茄炒鸡蛋", 1))
+# print(extractSlots("继续", 1))
