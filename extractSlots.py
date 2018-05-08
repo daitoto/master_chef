@@ -10,7 +10,7 @@ def extractSlots(text, state):
 		return '', 3
 
 	# 先匹配一下所有的菜名
-	pattern = re.compile('(鱼香肉丝|宫保鸡丁|番茄炒鸡蛋|地三鲜|糖醋排骨|可乐鸡翅|红烧肉|水煮肉片|水煮肉|麻婆豆腐)')
+	pattern = re.compile('(鱼香肉丝|宫保鸡丁|番茄炒鸡蛋|地三鲜|糖醋排骨|可乐鸡翅|红烧肉|水煮肉片|水煮肉|麻婆豆腐)$')
 	if re.match(pattern, text) and state == 0:
 		return text, 0
 
