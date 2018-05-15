@@ -5,9 +5,10 @@ import random
 import numpy as np
 
 class Meal(object):
-	def __init__(self, mealName, material, mealSteps):
+	def __init__(self, mealName, material, style, mealSteps):
 		self.mealName = mealName
 		self.material = material
+		self.style = style
 		self.mealSteps = mealSteps
 
 	def queryByName(self, name):
@@ -50,14 +51,15 @@ class Response(object):
 		for dish in cuisine:
 			mealName = dish[0]
 			material = dish[1].split(' ')
-			steps = dish[2].split('\n')
+			style = dish[2]
+			steps = dish[3].split('\n')
 			steps = [step.split('$') for step in steps]
 			for step in steps:
 				if len(step) == 1:
 					step.append(0)
 				else:
 					step[1] = int(step[1])
-			self.meals.append(Meal(mealName, material, steps))
+			self.meals.append(Meal(mealName, material, style, steps))
 		f.close()
 
 		f = open('data/keyword.txt', 'r')
