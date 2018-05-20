@@ -29,9 +29,10 @@ class Meal(object):
 
 
 class Ad(object):
-	def __init__(self, adVoice, adTime):
+	def __init__(self, adVoice, adTime, adType=1):
 		self.adVoice = adVoice
 		self.adTime = int(adTime)
+		self.adType = adType
 
 	def queryByTime(self, time):
 		return self.adTime <= time
