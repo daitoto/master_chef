@@ -1,0 +1,13 @@
+http://v.voltree.cn/static/master_chef/jiangyou.mp3 15 0
+##
+http://v.voltree.cn/static/master_chef/shisanxiang.mp3 60 0
+##
+http://v.voltree.cn/static/master_chef/song1.mp3 300 1
+##
+http://v.voltree.cn/static/master_chef/tiaoheyou.mp3 30
+##
+http://v.voltree.cn/static/master_chef/song2.mp3 180
+##
+http://v.voltree.cn/static/master_chef/song3.mp3 120
+##
+http://v.voltree.cn/static/master_chef/tieguo1.wav 60

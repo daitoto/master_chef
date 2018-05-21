@@ -29,7 +29,8 @@ def chef():
 	res_string, drects, shouldEndSession = users.select(res_type, meal_name, text['session']['user']['userId'])
 	if shouldEndSession:
 		users.saveUsers()
-
+	if res_string == '我不太明白您的意思。' and user_info == 0:
+		res_string = ''
 	return jsonify(version = text['version'],
 					requestId = text['request']['requestId'],
 					response = {"outputSpeech": res_string,
