@@ -35,7 +35,7 @@ def chef():
 					requestId = text['request']['requestId'],
 					response = {"outputSpeech": res_string,
 								"reprompt": {
-									"outputSpeech": "对不起，我不太明白你的意思"
+									"outputSpeech": "大厨正在想办法哦"
 								},
 								"directives": drects,
 								"shouldEndSession": shouldEndSession})
