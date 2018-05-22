@@ -32,7 +32,7 @@ class Ad(object):
 	def __init__(self, adVoice, adTime, adType=1):
 		self.adVoice = adVoice
 		self.adTime = int(adTime)
-		self.adType = adType
+		self.adType = int(adType)
 
 	def queryByTime(self, time):
 		return self.adTime <= time
@@ -74,8 +74,9 @@ class Response(object):
 		t = f.read().split('\n##\n')
 		l = [m.split(' ') for m in t]
 		for m in l:
-			self.ads.append(Ad(m[0], m[1]))
-		self.ads = sorted(self.ads, key=lambda d:d.adTime, reverse=True)
+			self.ads.append(Ad(m[0], m[1], m[2]))
+		#self.ads = sorted(self.ads, key=lambda d:d.adTime, reverse=True)
+		random.shuffle(self.ads)
 		f.close()
 
 	def _replace_keywords(self, words):
@@ -94,15 +95,25 @@ class Response(object):
 	def _find_ads(self, tim):
 		ret = []
 		time_left = tim
+		voice_ad = False
 		flag = 1
-		while time_left and flag:
-			flag = 0
+		while time_left and not voice_ad:
 			for ad in self.ads:
-				if ad.queryByTime(time_left):
-					flag = 1
+				if ad.queryByTime(time_left) and ad.adType == 0:
+					voice_ad = True
 					ret.append({"type": "audio", "url": ad.adVoice})
 					time_left -= ad.adTime
 					break
+
+		while time_left and flag:
+			flag = 0
+			for ad in self.ads:
+				if ad.queryByTime(time_left) and ad.adType == 1:
+					flag = 1
+					ret.append({"type": "audio", "url": ad.adVoice})
+					time_left -= ad.adTime
+			random.shuffle(self.ads)
+
 		return ret
 
 	def makeResponseStep(self, name, step_id):
