@@ -1,46 +1,46 @@
-https://v.internetapi.cn/static/master_chef/jiangyou.mp3 15 0
+http://v.internetapi.cn/static/master_chef/jiangyou.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/tiaoheyou.mp3 15 0
+http://v.internetapi.cn/static/master_chef/tiaoheyou.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/shisanxiang.mp3 15 0
+http://v.internetapi.cn/static/master_chef/shisanxiang.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/song1.mp3 300 1
+http://v.internetapi.cn/static/master_chef/song1.mp3 300 1
 ##
-https://v.internetapi.cn/static/master_chef/tiaoheyou.mp3 30 0
+http://v.internetapi.cn/static/master_chef/tiaoheyou.mp3 30 0
 ##
-https://v.internetapi.cn/static/master_chef/song2.mp3 120 1
+http://v.internetapi.cn/static/master_chef/song2.mp3 120 1
 ##
-https://v.internetapi.cn/static/master_chef/song3.mp3 60 1
+http://v.internetapi.cn/static/master_chef/song3.mp3 60 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av10559468_必胜客惹火藤椒烤鸡比萨.mp3 15 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/av10559468_必胜客惹火藤椒烤鸡比萨.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/帅丰集成灶.mp3 30 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/帅丰集成灶.mp3 30 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av12439887美的电饭锅米饭篇.mp3 15 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/av12439887美的电饭锅米饭篇.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/李锦记蚝油.mp3 30 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/李锦记蚝油.mp3 30 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av22033500太太乐.mp3 15 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/av22033500太太乐.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/苏泊尔晶韵玻璃杯.mp3 15 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/苏泊尔晶韵玻璃杯.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av23516277德芙.mp3 15 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/av23516277德芙.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/苏泊尔焖烧杯.mp3 17 0
+http://v.internetapi.cn/static/master_chef/mp3/广告/苏泊尔焖烧杯.mp3 17 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/ShootingStars.mp3 233 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/ShootingStars.mp3 233 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Flames.mp3 224 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/Flames.mp3 224 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/UptownFunk.mp3 270 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/UptownFunk.mp3 270 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/NO.mp3 213 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/NO.mp3 213 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/BadinCommon.mp3 180 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/BadinCommon.mp3 180 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Chandelier.mp3 217 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/Chandelier.mp3 217 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Unstoppable.mp3 218 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/Unstoppable.mp3 218 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/LookWhatYouMadeMeDo.mp3 232 1
+http://v.internetapi.cn/static/master_chef/mp3/歌/LookWhatYouMadeMeDo.mp3 232 1
 
