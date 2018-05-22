@@ -97,6 +97,7 @@ class Response(object):
 		time_left = tim
 		voice_ad = False
 		flag = 1
+		random.shuffle(self.ads)
 		while time_left and not voice_ad:
 			for ad in self.ads:
 				if ad.queryByTime(time_left) and ad.adType == 0:
