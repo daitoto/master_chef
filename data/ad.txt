@@ -16,31 +16,31 @@ https://v.internetapi.cn/static/master_chef/mp3/广告/av10559468_必胜客惹�
 ##
 https://v.internetapi.cn/static/master_chef/mp3/广告/帅丰集成灶.mp3 30 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av12439887_【中国大陆广告】美的电饭锅米饭篇（2006.mp3 15 0
+https://v.internetapi.cn/static/master_chef/mp3/广告/av12439887美的电饭锅米饭篇.mp3 15 0
 ##
 https://v.internetapi.cn/static/master_chef/mp3/广告/李锦记蚝油.mp3 30 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av22033500_[内地广告](2018)太太乐(16：9).mp3 15 0
+https://v.internetapi.cn/static/master_chef/mp3/广告/av22033500太太乐.mp3 15 0
 ##
 https://v.internetapi.cn/static/master_chef/mp3/广告/苏泊尔晶韵玻璃杯.mp3 15 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/广告/av23516277_[内地广告](2018)德芙(16：9)-2.mp3 15 0
+https://v.internetapi.cn/static/master_chef/mp3/广告/av23516277德芙.mp3 15 0
 ##
 https://v.internetapi.cn/static/master_chef/mp3/广告/苏泊尔焖烧杯.mp3 17 0
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Bag Raiders - Shooting Stars (Instrumental).mp3 233 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/ShootingStars.mp3 233 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/David Guetta,Sia - Flames.mp3 224 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/Flames.mp3 224 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Mark Ronson,Bruno Mars - Uptown Funk.mp3 270 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/UptownFunk.mp3 270 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Meghan Trainor - NO.mp3 213 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/NO.mp3 213 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Shy Martin - Bad in Common.mp3 180 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/BadinCommon.mp3 180 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Sia - Chandelier.mp3 217 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/Chandelier.mp3 217 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Sia - Unstoppable.mp3 218 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/Unstoppable.mp3 218 1
 ##
-https://v.internetapi.cn/static/master_chef/mp3/歌/Taylor Swift - Look What You Made Me Do.mp3 232 1
+https://v.internetapi.cn/static/master_chef/mp3/歌/LookWhatYouMadeMeDo.mp3 232 1
 
