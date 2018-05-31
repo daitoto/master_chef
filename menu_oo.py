@@ -43,6 +43,7 @@ class Response(object):
 		self.meals = meals
 		self.keywords = keywords
 		self.ads = ads
+		self.hint_words = "，做完后您可以说下一步。"
 		self._load_data()
 
 	def _load_data(self):
@@ -125,7 +126,7 @@ class Response(object):
 				words, tim = m.queryStep(step_id)
 				if words == "您的菜已经做完啦！":
 					return words, [], True
-				words = '第%d步，' % (step_id + 1) + words
+				words = '第%d步，' % (step_id + 1) + words + self.hint_words
 				return self._replace_keywords(words), self._find_ads(tim), False
 
 	def makeResponseMaterial(self, material):
@@ -147,9 +148,6 @@ class Response(object):
 		for m in self.meals:
 			if m.queryByName(name):
 				words, tim = m.queryStep(0)
-				words = "第1步，" + words
+				words = "第1步，" + words + self.hint_words
 				return self._replace_keywords(words), self._find_ads(tim), False
-
-		
-
 		return "我还不会这个菜哦？", [], False

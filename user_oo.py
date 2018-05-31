@@ -52,7 +52,9 @@ class Users(object):
 
 	def getUser(self, user_id):
 		try:
-			return self.user_list[user_id]
+			user = self.user_list[user_id]
+			user.hint = 0
+			return user
 		except:
 			self.addUser(user_id)
 			return self.user_list[user_id]
@@ -70,6 +72,7 @@ class User(object):
 		self.dish_name = dish_name
 		self.step_id = step_id
 		self.history = history
+		self.hint = 0
 
 	def addHistory(self, string, time):
 		self.history.append([string, time])
