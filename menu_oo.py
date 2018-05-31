@@ -149,4 +149,7 @@ class Response(object):
 				words, tim = m.queryStep(0)
 				words = "第1步，" + words
 				return self._replace_keywords(words), self._find_ads(tim), False
+
+		
+
 		return "我还不会这个菜哦？", [], False
