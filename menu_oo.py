@@ -21,9 +21,12 @@ class Meal(object):
 				score += 1
 		return score ** 2 / len(self.material)
 
-	def queryStep(self, step_id):
+	def queryStep(self, step_id, hint_words):
 		if step_id < len(self.mealSteps):
-			return self.mealSteps[step_id][0], self.mealSteps[step_id][1]
+			if step_id < len(self.mealSteps) - 1:
+				return self.mealSteps[step_id][0] + hint_words, self.mealSteps[step_id][1]
+			else:
+				return self.mealSteps[step_id][0], self.mealSteps[step_id][1]
 		else:
 			return "您的菜已经做完啦！", 0
 
@@ -123,10 +126,10 @@ class Response(object):
 			return "请问您要做什么菜？", [], False
 		for m in self.meals:
 			if m.queryByName(name):
-				words, tim = m.queryStep(step_id)
+				words, tim = m.queryStep(step_id, self.hint_words)
 				if words == "您的菜已经做完啦！":
 					return words, [], True
-				words = '第%d步，' % (step_id + 1) + words + self.hint_words
+				words = '第%d步，' % (step_id + 1) + words
 				return self._replace_keywords(words), self._find_ads(tim), False
 
 	def makeResponseMaterial(self, material):
@@ -147,7 +150,7 @@ class Response(object):
 	def makeResponseName(self, name):
 		for m in self.meals:
 			if m.queryByName(name):
-				words, tim = m.queryStep(0)
-				words = "第1步，" + words + self.hint_words
+				words, tim = m.queryStep(0, self.hint_words)
+				words = "第1步，" + words
 				return self._replace_keywords(words), self._find_ads(tim), False
 		return "我还不会这个菜哦？", [], False
