@@ -37,6 +37,8 @@ class Users(object):
 			return "好的，再见", [], True
 		elif request_type == 5:
 			return user.user_queryMaterial(names)
+		elif request_type == 6:
+			return user.user_All()
 		else:
 			pass
 
@@ -93,6 +95,13 @@ class User(object):
 			self.addHistory(self.dish_name, time.time())
 			self.dish_name = ""
 			self.step_id = 0
+		return ret
+
+	def user_All(self):
+		ret = response.makeResponseAll(self.dish_name)
+		self.addHistory(self.dish_name, time.time())
+		self.dish_name = ""
+		self.step_id = 0
 		return ret
 
 	def user_queryMaterial(self, material):

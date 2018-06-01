@@ -30,6 +30,12 @@ class Meal(object):
 		else:
 			return "您的菜已经做完啦！", 0
 
+	def queryAll(self):
+		ret = ""
+		for i in range(len(self.mealSteps)):
+			ret += self.mealSteps[i][0] + "。"
+		return ret
+
 
 class Ad(object):
 	def __init__(self, adVoice, adTime, adType=1):
@@ -132,6 +138,14 @@ class Response(object):
 				words = '第%d步，' % (step_id + 1) + words
 				return self._replace_keywords(words), self._find_ads(tim), False
 
+	def makeResponseAll(self, name):
+		if name == "":
+			return "请问您要做什么菜？", [], False
+		for m in self.meals:
+			if m.queryByName(name):
+				words = m.queryAll()
+				return self._replace_keywords(words), [], False
+
 	def makeResponseMaterial(self, material):
 		scores = []
 		for m in self.meals:
@@ -151,6 +165,6 @@ class Response(object):
 		for m in self.meals:
 			if m.queryByName(name):
 				words, tim = m.queryStep(0, self.hint_words)
-				words = "第1步，" + words
+				words = "第1步，" + words + "还可以说'所有步骤'来一次性听完所有步骤。"
 				return self._replace_keywords(words), self._find_ads(tim), False
 		return "我还不会这个菜哦？", [], False
