@@ -165,6 +165,6 @@ class Response(object):
 		for m in self.meals:
 			if m.queryByName(name):
 				words, tim = m.queryStep(0, self.hint_words)
-				words = "第1步，" + words + "还可以说'所有步骤'来一次性听完所有步骤。"
+				words = "第1步，" + words + "还可以说'所有步骤'，来一次性听完所有步骤。"
 				return self._replace_keywords(words), self._find_ads(tim), False
 		return "我还不会这个菜哦？", [], False
