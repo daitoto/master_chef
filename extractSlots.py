@@ -94,7 +94,12 @@ def extractSlots(text, state):
 	if result:
 		food = result.group("food")
 		return food, 0
-
+	
+	# 有什么菜
+	pattern = re.compile('(有|会做|能做|可以做)(些什么|什么|哪些)菜')
+	if re.search(pattern, text):
+		return '', 7
+	
 	# 用户退出
 	pattern = re.compile('.*退出.*')
 	result = re.match(pattern, text)
