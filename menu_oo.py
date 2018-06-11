@@ -131,7 +131,7 @@ class Response(object):
 		random.shuffle(self.meals)
 		dishes = ""
 		for i in range(3):
-			dish += self.meals[i].mealName + '，'
+			dishes += self.meals[i].mealName + '，'
 		return "我会做，" + dishes + "和很多其他的菜哦。", [], False
 
 	def makeResponseStep(self, name, step_id):
