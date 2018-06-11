@@ -29,7 +29,7 @@ def chef():
 	res_string, drects, shouldEndSession = users.select(res_type, meal_name, text['session']['user']['userId'])
 	if res_string == "我还不会这个菜哦？":
 		res_type = 5
-		meal_name = splitMateria(meal_name)
+		meal_name = splitMateria(meal_name[0])
 		res_string, drects, shouldEndSession = users.select(res_type, meal_name, text['session']['user']['userId'])
 	if shouldEndSession:
 		users.saveUsers()
