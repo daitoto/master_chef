@@ -33,6 +33,7 @@ def chef():
 		res_string, drects, shouldEndSession = users.select(res_type, meal_name, text['session']['user']['userId'])
 	if shouldEndSession:
 		users.saveUsers()
+	logging.info('response:' + res_string)
 	# if res_string == '我不太明白您的意思。' and user_info == 0:
 	# 	res_string = '你可以问我怎么做或者土豆能做什么'
 	return jsonify(version = text['version'],
