@@ -10,6 +10,8 @@ start_time = 0
 end_time = 0
 for i, line in enumerate(f):
 	s = line[:-1].split(' ')
+	if len(s) < 7:
+		continue
 	log_day = s[0]
 	log_month = s[1]
 	log_year = s[2]
@@ -65,11 +67,11 @@ for user in users:
 	if back_again:
 		next_day_users += 1
 
-print(tot_num)
-print(tot_users)
-print(next_day_users)
-print(use_skill_times)
-print(use_skill_lens)
+print('总调用数', tot_num)
+print('总用户数', tot_users)
+print('用户再用人数', next_day_users)
+#print(use_skill_times)
+#print(use_skill_lens)
 
 fig = plt.figure('使用时段和使用时长')
 period = fig.add_subplot(211)
