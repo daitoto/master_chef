@@ -1,5 +1,8 @@
+# -*- coding: utf-8 -*-
 import time
 import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 users = dict()
 f = open('chef.log', 'r')
 last_id = 0
@@ -67,3 +70,21 @@ print(tot_users)
 print(next_day_users)
 print(use_skill_times)
 print(use_skill_lens)
+
+fig = plt.figure('使用时段和使用时长')
+period = fig.add_subplot(211)
+length = fig.add_subplot(212)
+#period.set_title('使用时段')
+#length.set_title('使用时长')
+period.bar(np.arange(24), use_skill_times, width=0.8, edgecolor='none')
+p_labels = list(map(lambda x: '%02d' % x, list(range(24))))
+period.set_xticks(np.arange(24))
+period.set_xticklabels(p_labels)
+# period.set_xlabel('hour')
+# period.set_ylabel('times')
+
+length.hist(use_skill_lens, bins=20, width=10)
+# length.set_xlabel('time_length')
+# length.set_ylabel('times')
+
+plt.show()
