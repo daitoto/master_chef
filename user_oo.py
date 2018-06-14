@@ -21,8 +21,15 @@ class Users(object):
 		user = self.getUser(user_id)
 		print(request_type, names)
 		if request_type == -1:
-			return "我不太明白您的意思。", [], False
-		elif request_type == 0:
+			if user.failed:
+				user.failed = False
+				return "已退出。欢迎下次使用！", [], True
+			else:
+				user.failed = True
+				return "我不太明白您的意思。", [], False
+
+		user.failed = False
+		if request_type == 0:
 			return user.user_queryName(names[0])
 		elif request_type == 1:
 			return user.user_Next()
@@ -77,6 +84,7 @@ class User(object):
 		self.step_id = step_id
 		self.history = history
 		self.hint = 0
+		self.failed = False
 
 	def addHistory(self, string, time):
 		self.history.append([string, time])

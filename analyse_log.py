@@ -51,8 +51,8 @@ use_skill_lens = []
 for user in users:
 	back_again = False
 	his = users[user]
-	#print(user)
-	#print(his)
+	print(user)
+	print(his)
 	tot_num += len(his)
 	if len(his) > 0:
 		first_day = int(his[0][0][8:10])
