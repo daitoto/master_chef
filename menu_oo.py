@@ -94,10 +94,10 @@ class Response(object):
 		ret = ""
 		for w in words:
 			if w in self.keywords:
-				if random.random() <= 1:
-					ret += self.keywords[w][1]
-				else:
-					ret += self.keywords[w][0]
+				# if random.random() <= 1:
+				# 	ret += self.keywords[w][1]
+				# else:
+				ret += self.keywords[w][0]
 			else:
 				ret += w
 		return ret
@@ -105,7 +105,7 @@ class Response(object):
 	def _find_ads(self, tim):
 		ret = []
 		time_left = tim
-		voice_ad = False
+		voice_ad = True
 		flag = 1
 		random.shuffle(self.ads)
 		while time_left and not voice_ad:
