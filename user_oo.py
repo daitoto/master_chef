@@ -112,6 +112,8 @@ class User(object):
 		return ret
 
 	def user_queryMaterial(self, material):
+		self.dish_name = ""
+		self.step_id = 0
 		return response.makeResponseMaterial(material)
 
 	def user_queryName(self, name):
